@@ -1,0 +1,17 @@
+  # 除外するディレクトリ（自動生成されたファイル）
+  # デフォルト設定にある"vendor/**/*"が無効化されないように記述
+AllCops:
+  Exclude:
+    - bin/*
+    - db/schema.rb
+    - db/migrate/*
+    - vendor/**/*
+
+Style/AsciiComments:
+  Enabled: false
+
+LineLength:
+  Max: 120
+
+Style/Documentation:
+  Enabled: false

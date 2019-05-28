@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -30,10 +32,23 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :local
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  # --チュートリアル------------------------------------------------------------------------------
 
-  config.action_mailer.perform_caching = false
+  # Don't care if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = true
+  # letter_openerを使うため :test から修正
+  config.action_mailer.delivery_method = :letter_opener_web
+
+  host = 'http://192.168.33.10'
+
+  port = 3000
+
+  # ※https → http に変えました
+  config.action_mailer.default_url_options = { host: host, port: port, protocol: 'http' }
+
+  # --------------------------------------------------------------------------------
+  # letter_openerを使うための修正
+  config.action_mailer.perform_caching = true
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
